@@ -1,27 +1,27 @@
-# EsplaiAyudante
+# Ayudante para esplai
+Una aplicación desarrollada en la última versión de Angular y con una API rest con swagger usando TSOA y MongoDB.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
+## ¿De dónde sale esto?
+Después de llevar unos años en el desarrollo con Angular, APIs con NodeJS y de monitor, 
+veo útil aplicar partes de lo que he aprendido para crear una aplicación que sirva para 
+gestionar diversas partes de un esplai, es una especie de **planning para monitores**.
 
-## Development server
+## Finalidad
+Hacer más facil las tareas de un monitor, poder revisar que se ha hecho otros años para tal 
+evento y dejar constancía de que has hecho tu, poder manejar inscripciones, salidas, etc.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Tecnologias
+Un poco más de explicación de que uso y porque
 
-## Code scaffolding
+### Angular (front)
+Framework que uso desde que empecé mi carrera, he ido saltando a la versión más nueva, lo elijo
+por encima de react, vue o svelte, para llevar una mejor gestión del proyecto, implementar mejoras de
+rendimiento y porque ya lo tengo familiarizado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### TSOA (back)
+Es una librería no muy conocida para generar APIs usando TypeScript, a parte genera la parte
+swagger para poder ver e implementar todas tus rutas de una forma muy fácil.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### MongoDB (database)
+Me gusta utilizar esta base de datos, intentar adaptarla a los proyectos que voy haciendo,
+también se pueden conseguir hasta 512MB gratis de forma permanente, algo que va bien para disminuir gastos.
