@@ -1,7 +1,7 @@
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {NgModule} from '@angular/core';
-import {EventsRouting} from './events.routing';
+import {CommonModule}    from '@angular/common';
+import {FormsModule}     from '@angular/forms';
+import {NgModule}        from '@angular/core';
+import {MembersRouting}  from './members-routing.module';
 import { MainComponent } from './main/main.component';
 
 @NgModule({
@@ -9,11 +9,11 @@ import { MainComponent } from './main/main.component';
     FormsModule,
     CommonModule,
 
-    EventsRouting,
+    MembersRouting,
   ],
   declarations: [
     MainComponent
   ],
 })
-export class EventsModule {
+export class MembersModule {
 }

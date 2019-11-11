@@ -1,8 +1,16 @@
 @tailwind base;
 @tailwind components;
 
+.nav {
+  @apply pt-4 pb-3 px-5 inline-block mt-0 font-extrabold text-gray-400;
+}
+
 .nav.active {
-  @apply rounded-full;
+  @apply border-b-4 border-gray-200 text-gray-200;
+}
+
+label {
+  @apply text-gray-700 text-sm font-bold;
 }
 
 @tailwind utilities;

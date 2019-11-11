@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./base/events/events.module').then(m => m.EventsModule)
   },
   {
+    path: 'members',
+    loadChildren: () => import('./base/members/members.module').then(m => m.MembersModule)
+  },
+  {
     path: '**',
     redirectTo: 'events'
   }
