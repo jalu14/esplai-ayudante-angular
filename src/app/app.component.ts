@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ae-component',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styles: [`
+    .active {
+      @apply rounded-full bg-gray-200 px-2 py-1 text-gray-700 font-bold;
+    }
+  `]
 })
-export class AppComponent {
-  title = 'esplai-ayudante';
-}
+export class AppComponent {}

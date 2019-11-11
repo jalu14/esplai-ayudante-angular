@@ -1,19 +1,20 @@
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
-import {EventsRouting} from './events.routing';
-import { MainComponent } from './main/main.component';
+import {AeNavBarComponent} from './ae-navbar/ae-nav-bar.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
-    FormsModule,
     CommonModule,
-
-    EventsRouting,
+    RouterModule,
   ],
   declarations: [
-    MainComponent
+    AeNavBarComponent
   ],
+  exports: [
+    AeNavBarComponent
+  ],
+  entryComponents: []
 })
-export class EventsModule {
+export class SharedModule {
 }

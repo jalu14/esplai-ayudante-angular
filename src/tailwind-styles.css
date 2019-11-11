@@ -10616,6 +10616,12 @@ video {
   z-index: auto;
 }
 
+/*.active {*/
+
+/*  @apply rounded-full bg-gray-200 px-2 py-1 text-gray-700 font-bold;*/
+
+/*}*/
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
