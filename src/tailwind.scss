@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+
+.nav.active {
+  @apply rounded-full;
+}
+
+@tailwind utilities;
