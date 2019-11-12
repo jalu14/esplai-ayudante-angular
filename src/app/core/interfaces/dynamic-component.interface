@@ -1,0 +1,5 @@
+import { ModalTemplate } from '../template/modal-template';
+
+export interface DynamicComponent {
+  new (): ModalTemplate;
+}

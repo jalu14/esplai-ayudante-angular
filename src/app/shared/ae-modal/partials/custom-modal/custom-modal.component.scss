@@ -1,0 +1,65 @@
+@import '../../../../../sass/variables.scss';
+
+div.modal-container {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 95%;
+  .body {
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+}
+
+.sm {
+  width: 95%;
+}
+.md {
+  width: 95%;
+}
+.lg {
+  width: 95%;
+}
+
+@media (min-width: $sm-breakpoint) {
+  div.modal-container {
+    top: 15px;
+  }
+  .sm {
+    width: 50%;
+  }
+  .md {
+    width: 75%;
+  }
+  .lg {
+    width: 95%;
+  }
+}
+
+@media (min-width: $md-breakpoint) {
+  div.modal-container {
+    top: 50px;
+    max-height: 85%;
+  }
+  .sm {
+    width: 40%;
+  }
+  .md {
+    width: 60%;
+  }
+  .lg {
+    width: 80%;
+  }
+}
+
+@media (min-width: $lg-breakpoint) {
+  .sm {
+    width: 30%;
+  }
+  .md {
+    width: 45%;
+  }
+  .lg {
+    width: 80%;
+  }
+}

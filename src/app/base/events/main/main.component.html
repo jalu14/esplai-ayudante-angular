@@ -1,7 +1,7 @@
 <ng-container *ngIf="eventList.length && !loading; else emptyView">
     <div class="flex justify-between mt-4">
         <span class="text-2xl font-semibold text-gray-700">Events</span>
-        <ae-button label="Create event"></ae-button>
+        <ae-button (click)="createNewEvent()" label="Create event"></ae-button>
     </div>
     <div [hidden]="!eventList.length" class="w-full bg-white shadow-md rounded px-8 pt-4 pb-6 my-4">
         <label class="text-gray-700 text-sm font-bold">
@@ -29,7 +29,7 @@
     <div class="card-bg relative w-11/12 mx-auto bg-gray-700 text-gray-100 shadow-md rounded px-8 pt-4 pb-6 mt-12">
         <h2 class="text-3xl font-semibold">Create your first event</h2>
         <p class="w-8/12 lg:w-1/2 mt-2">Events help scheduling and planning important dates, also they serve as a reference for others.</p>
-        <ae-button label="Create event"></ae-button>
+        <ae-button (click)="createNewEvent()" label="Create event"></ae-button>
     </div>
 
 </ng-template>

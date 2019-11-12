@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve\" \"ngtw watch\"",
+    "start": "concurrently \"ng serve --host 0.0.0.0\" \"ngtw watch\"",
     "prestart": "ngtw build",
     "build": "ngtw build --purge && ng build --prod --build-optimizer --vendor-chunk --progress",
     "test": "ng test",

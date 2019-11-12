@@ -4,6 +4,8 @@ import {AeNavBarComponent} from './ae-navbar/ae-nav-bar.component';
 import {RouterModule} from '@angular/router';
 import { AeUserNavbarComponent } from './ae-user-navbar/ae-user-navbar.component';
 import { AeButtonComponent } from './ae-button/ae-button.component';
+import { AeModalComponent } from './ae-modal/ae-modal.component';
+import { CustomModalComponent } from './ae-modal/partials/custom-modal/custom-modal.component';
 
 @NgModule({
   imports: [
@@ -13,13 +15,18 @@ import { AeButtonComponent } from './ae-button/ae-button.component';
   declarations: [
     AeNavBarComponent,
     AeUserNavbarComponent,
-    AeButtonComponent
+    AeButtonComponent,
+    AeModalComponent,
+    CustomModalComponent
   ],
   exports: [
     AeNavBarComponent,
-    AeButtonComponent
+    AeButtonComponent,
+    AeModalComponent
   ],
-  entryComponents: []
+  entryComponents: [
+    CustomModalComponent
+  ]
 })
 export class SharedModule {
 }
