@@ -9,8 +9,16 @@
   @apply border-b-4 border-gray-200 text-gray-200;
 }
 
-label {
-  @apply text-gray-700 text-sm font-bold;
+.ae-button {
+  @apply font-bold py-2 px-4 mt-8 inline-flex items-center;
+
+  &.primary {
+    @apply bg-blue-500 text-gray-200;
+  }
+
+  &.warning {
+    @apply bg-red-500 text-gray-200;
+  }
 }
 
 @tailwind utilities;
