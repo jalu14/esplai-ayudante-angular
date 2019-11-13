@@ -6,7 +6,7 @@ div.modal-container {
   transform: translateX(-50%);
   max-height: 95%;
   .body {
-    overflow: scroll;
+    overflow: auto;
     overflow-x: hidden;
   }
 }

@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.createNewEvent();
   }
 
   public createNewEvent() {
