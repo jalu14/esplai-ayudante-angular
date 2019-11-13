@@ -15,6 +15,8 @@
         </ng-container>
     </div>
     <div class="footer">
-
+        <full-width-footer [hideCancel]="false"
+                           (footerAction)="onAction($event)">
+        </full-width-footer>
     </div>
 </div>

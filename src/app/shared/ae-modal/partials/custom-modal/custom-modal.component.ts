@@ -20,6 +20,18 @@ export class CustomModalComponent {
     this.modalConfig = this.injector.get('config');
   }
 
+  public onAction(action: 'accept' | 'close') {
+    if (action === 'accept') {
+      this.accept();
+    } else {
+      this.close();
+    }
+  }
+
+  public accept() {
+    this.modal.close({message: 'success'});
+  }
+
   public close() {
     this.modal.close({message: 'closed'});
   }

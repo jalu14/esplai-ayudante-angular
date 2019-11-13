@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CreateEventModal }  from '../modals/create-event/create-event.modal';
 import { ModalFactory }      from '../../../services/modal/modal.factory';
 import { ModalResponse }     from '../../../core/models';
+import { EventEntity }       from '../../../core/entities';
 
 @Component({
   selector: 'ae-main',
@@ -28,7 +29,7 @@ export class MainComponent implements OnInit {
         size: 'sm',
         title: 'New event'
       },
-      {}
+      new EventEntity({startDate: '2019-11-15'})
     ).subscribe((res: ModalResponse) => {
       console.log(res);
     })

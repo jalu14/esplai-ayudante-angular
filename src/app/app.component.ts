@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component }        from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ae-component',
   templateUrl: './app.component.html',
-  styles: [`
-    .active {
-      @apply rounded-full bg-gray-200 px-2 py-1 text-gray-700 font-bold;
-    }
-  `]
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('es');
+    translate.use('es');
+  }
+}

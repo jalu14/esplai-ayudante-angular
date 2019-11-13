@@ -1,0 +1,13 @@
+.dropdown::after {
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 20px solid #fff;
+  top: -12px;
+  right: 2px;
+}
+
+.dropdown::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+}

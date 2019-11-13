@@ -1,7 +1,7 @@
 {
   "labels": {
-    "name": "Name",
-    "startDate": "Start date",
-    "endDate": "End date"
+    "name": "Nombre",
+    "startDate": "Inicio",
+    "endDate": "Fin"
   }
 }
