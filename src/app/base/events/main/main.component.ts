@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
       CreateEventModal,
       {
         params: null,
-        size: 'lg',
+        size: 'sm',
         title: 'New event'
       },
       {}
