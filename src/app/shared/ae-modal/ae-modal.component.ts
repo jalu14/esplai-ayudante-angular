@@ -25,7 +25,7 @@ export class AeModalComponent implements OnInit {
   }
 
   public backDropClick() {
-    this.modal.close({message: 'backdrop'})
+    this.modal.close({message: 'backdrop', entity: null})
   }
 
   private createNewModal(modal: { component: any, params: any, size: any }) {

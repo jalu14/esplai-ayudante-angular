@@ -4,14 +4,13 @@
     </label>
     <input id="date"
            type="text"
-           mwlFlatpickr
            class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-sm py-2 px-2 mb-1 leading-tight focus:outline-none"
            altInputClass="appearance-none block w-full bg-gray-200 text-gray-700 rounded-sm py-2 px-2 mb-1 leading-tight focus:outline-none"
            [(ngModel)]="innerValue"
            [altInput]="true"
            [locale]="selectedLocale"
            [disableMobile]="true"
-           [mode]="'range'"
-           (flatpickrValueUpdate)="setValue($event)">
+           (flatpickrValueUpdate)="setValue($event)"
+           mwlFlatpickr>
     <p [hidden]="true" class="text-red-500 text-xs italic">Please fill out this field.</p>
 </ng-container>

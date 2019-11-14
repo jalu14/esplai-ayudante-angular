@@ -29,11 +29,11 @@ export class CustomModalComponent {
   }
 
   public accept() {
-    this.modal.close({message: 'success'});
+    this.modal.close({message: 'success', entity: this.entity});
   }
 
   public close() {
-    this.modal.close({message: 'closed'});
+    this.modal.close({message: 'closed', entity: this.entity});
   }
 
 }
