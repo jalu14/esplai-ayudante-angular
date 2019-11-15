@@ -4,27 +4,16 @@
             <ae-input [model]="entity"
                       key="name"
                       [required]="true"
+                      minLength="10"
+                      maxLength="5"
                       [placeholder]="'Next week meeting'">
             </ae-input>
         </div>
         <div class="w-1/2 px-3 mb-1 mt-2">
-            <ae-input [model]="entity"
-                      key="startDate"
-                      [required]="true"
-                      [disabled]="true"
-                      [placeholder]="'26/05/19'">
-            </ae-input>
+            <ae-datepicker [model]="entity" key="startDate"></ae-datepicker>
         </div>
         <div class="w-1/2 px-3 mb-1 mt-2">
-            <ae-input [model]="entity"
-                      key="endDate"
-                      [required]="true"
-                      [disabled]="true"
-                      [placeholder]="'28/05/19'">
-            </ae-input>
-        </div>
-        <div class="w-full px-3 mb-1 mt-2">
-            <ae-datepicker [model]="entity" key="startDate"></ae-datepicker>
+            <ae-datepicker [model]="entity" key="endDate" [minDate]="entity.startDate"></ae-datepicker>
         </div>
     </div>
     <pre>{{entity | json}}</pre>

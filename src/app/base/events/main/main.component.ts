@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
         size: 'sm',
         title: 'New event'
       },
-      new EventEntity({startDate: '2019-11-15'})
+      new EventEntity({startDate: '15-11-2019'})
     ).subscribe((res: ModalResponse) => {
       console.log(res);
     })

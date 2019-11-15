@@ -1,8 +1,8 @@
-import { CommonModule }             from '@angular/common';
-import { NgModule }                 from '@angular/core';
-import { RouterModule }             from '@angular/router';
-import { FormsModule }              from '@angular/forms';
-import { FlatpickrModule } from 'angularx-flatpickr';
+import { CommonModule }                     from '@angular/common';
+import { NgModule }                         from '@angular/core';
+import { RouterModule }                     from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlatpickrModule }                  from 'angularx-flatpickr';
 
 import { AeNavBarComponent }        from './ae-navbar/ae-nav-bar.component';
 import { AeUserNavbarComponent }    from './ae-user-navbar/ae-user-navbar.component';
@@ -20,7 +20,8 @@ import { TranslateModule }          from '@ngx-translate/core';
     RouterModule,
     FormsModule,
     FlatpickrModule.forRoot(),
-    TranslateModule
+    TranslateModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     AeNavBarComponent,

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, Validators }                        from '@angular/forms';
 
 @Component({
   selector: 'ae-input',
@@ -20,34 +21,33 @@ export class AeInputComponent implements OnInit {
 
   @Output() public validCheck = new EventEmitter<boolean>();
 
-  public innerValue;
-  public isValid: boolean = true;
-  public okMaxLength: boolean = true;
-  public okMinLength: boolean = true;
+  public Object = Object;
+
+  public innerValue: any;
+  public innerControl: FormControl;
 
   public ngOnInit() {
     this.innerValue = this.model[this.key] || null;
+    this.setupFormControl();
   }
 
   public setValue(value) {
     this.model[this.key] = value;
-    this.checkValid(value);
   }
 
-  public checkValid(value) {
-    this.isValid = true;
-    this.okMaxLength = true;
-    this.okMinLength = true;
-    if (this.required && !value) this.isValid = false;
+  private setupFormControl() {
+    this.innerControl = this.innerControl ? this.innerControl : new FormControl();
+    let validators = [];
+    if (this.required) {
+      validators.push(Validators.required);
+    }
     if (this.maxLength) {
-      this.isValid = value.length <= this.maxLength;
-      this.okMaxLength = false;
+      validators.push(Validators.maxLength(+this.maxLength));
     }
     if (this.minLength) {
-      this.isValid = value.length <= this.minLength;
-      this.okMinLength = false;
+      validators.push(Validators.minLength(+this.minLength));
     }
-    this.validCheck.emit(this.isValid);
+    this.innerControl.setValidators(validators);
   }
 
 }

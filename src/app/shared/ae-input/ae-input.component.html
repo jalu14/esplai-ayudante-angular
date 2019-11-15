@@ -4,13 +4,16 @@
     </label>
     <input
         class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-sm py-2 px-2 mb-1 leading-tight focus:outline-none"
-        [ngClass]="{'border border-red-500': !isValid}"
-        [id]="key"
+        [ngClass]="{'border border-red-500': !innerControl.valid && (innerControl.dirty || innerControl.touched)}"
+        [formControl]="innerControl"
         [value]="innerValue"
+        [id]="key"
         [type]="type"
         [placeholder]="placeholder"
         [disabled]="disabled"
         (input)="setValue($event.target['value'])"
-        (focusout)="checkValid(innerValue)">
-    <p [hidden]="isValid" class="text-red-500 text-xs italic">Please fill out this field.</p>
+        (focusout)="innerControl.markAsTouched()">
+    <ng-container *ngIf="!innerControl.valid && (innerControl.dirty || innerControl.touched)">
+        <p class="text-red-500 text-xs italic">{{('formErrors.' + Object.keys(innerControl.errors)[0]) | translate : {var: innerControl.errors[Object.keys(innerControl.errors)[0]]} }}</p>
+    </ng-container>
 </ng-container>

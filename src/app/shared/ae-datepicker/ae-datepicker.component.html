@@ -7,10 +7,17 @@
            class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-sm py-2 px-2 mb-1 leading-tight focus:outline-none"
            altInputClass="appearance-none block w-full bg-gray-200 text-gray-700 rounded-sm py-2 px-2 mb-1 leading-tight focus:outline-none"
            [(ngModel)]="innerValue"
+           [formControl]="innerControl"
            [altInput]="true"
+           [mode]="type"
            [locale]="selectedLocale"
            [disableMobile]="true"
+           [minDate]="minDate"
+           dateFormat="d-m-Y"
+           [altFormat]="dateFormat[selectedLocale]"
            (flatpickrValueUpdate)="setValue($event)"
            mwlFlatpickr>
-    <p [hidden]="true" class="text-red-500 text-xs italic">Please fill out this field.</p>
+    <ng-container *ngIf="!innerControl.valid && (innerControl.dirty || innerControl.touched)">
+        <p class="text-red-500 text-xs italic">{{('formErrors.' + Object.keys(innerControl.errors)[0]) | translate : {var: innerControl.errors[Object.keys(innerControl.errors)[0]]} }}</p>
+    </ng-container>
 </ng-container>

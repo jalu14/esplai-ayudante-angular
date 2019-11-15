@@ -3,5 +3,10 @@
     "name": "Nombre",
     "startDate": "Inicio",
     "endDate": "Fin"
+  },
+  "formErrors": {
+    "required": "Porfavor, rellena este campo",
+    "minlength": "Este campo necesita {{var.requiredLength}} carácteres mínimo",
+    "maxlength": "Este campo tiene un límite de {{var.requiredLength}} carácteres"
   }
 }
