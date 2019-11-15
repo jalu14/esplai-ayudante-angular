@@ -7,7 +7,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 })
 export class AeUserNavbarComponent implements OnInit {
 
-  @HostListener('window:keydown.escape', ['$event'])
+  @HostListener('window:keydown.escape', [])
   keyDown() {
     this.dropdownActive = false;
   }
