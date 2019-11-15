@@ -3,8 +3,8 @@
         {{'labels.' + (label || key) | translate}}
     </label>
     <input
-        class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-sm py-2 px-2 mb-1 leading-tight focus:outline-none"
-        [ngClass]="{'border border-red-500': !innerControl.valid && (innerControl.dirty || innerControl.touched)}"
+        class="appearance-none block w-full rounded-sm py-2 px-2 mb-1 leading-tight bg-gray-200 text-gray-700 focus:bg-gray-700 focus:text-white transition-250 focus:outline-none"
+        [ngClass]="{'border-red-700 border-2': !innerControl.valid && (innerControl.dirty || innerControl.touched)}"
         [formControl]="innerControl"
         [value]="innerValue"
         [id]="key"

@@ -10,8 +10,7 @@ import { EventEntity }   from '../../../../core/entities';
           <ae-input [model]="entity"
                     key="name"
                     [required]="true"
-                    minLength="10"
-                    maxLength="5"
+                    minLength="5"
                     [placeholder]="'Next week meeting'">
           </ae-input>
         </div>
