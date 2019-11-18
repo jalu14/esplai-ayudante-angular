@@ -13,6 +13,8 @@ import { AeInputComponent }         from './ae-input/ae-input.component';
 import { FullWidthFooterComponent } from './ae-modal/partials/footers/full-width-footer/full-width-footer.component';
 import { AeDatepickerComponent }    from './ae-datepicker/ae-datepicker.component';
 import { TranslateModule }          from '@ngx-translate/core';
+import { AeSwitchComponent }        from './ae-switch/ae-switch.component';
+import { AeTextAreaComponent }      from './ae-text-area/ae-text-area.component';
 
 @NgModule({
   imports: [
@@ -31,14 +33,18 @@ import { TranslateModule }          from '@ngx-translate/core';
     CustomModalComponent,
     AeInputComponent,
     FullWidthFooterComponent,
-    AeDatepickerComponent
+    AeDatepickerComponent,
+    AeSwitchComponent,
+    AeTextAreaComponent,
   ],
   exports: [
     AeNavBarComponent,
     AeButtonComponent,
     AeDatepickerComponent,
     AeInputComponent,
-    AeModalComponent
+    AeModalComponent,
+    AeSwitchComponent,
+    AeTextAreaComponent,
   ],
   entryComponents: [
     CustomModalComponent

@@ -1,0 +1,17 @@
+<ng-container>
+    <div [ngClass]="{'flex items-center': inline}">
+        <label class="tracking-wide text-gray-700 text-xs font-bold"
+               [for]="key"
+               [ngClass]="{'block mb-2': !inline, 'inline mr-2': inline}">
+            {{'labels.' + (label || key) | translate}}
+        </label>
+        <div [class.inline-block]="inline">
+        <button class="rounded-sm flex items-center cursor-pointer w-16 transition-250 focus:outline-none"
+              [ngClass]="{'bg-gray-700 justify-end': innerValue, 'bg-gray-200 justify-start': !innerValue}"
+              (click)="changeValue()">
+            <span class="rounded-sm w-6 h-6 border-grey shadow-inner bg-white shadow" style="margin: 3px">
+            </span>
+        </button>
+        </div>
+    </div>
+</ng-container>

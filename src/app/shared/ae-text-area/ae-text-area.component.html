@@ -1,0 +1,20 @@
+<ng-container>
+    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" [for]="key">
+        {{'labels.' + (label || key) | translate}}
+    </label>
+    <textarea
+        class="appearance-none block w-full rounded-sm py-2 px-2 mb-1 leading-tight bg-gray-200 text-gray-700 focus:bg-gray-700 focus:text-white focus:outline-none transition-colors transition-250"
+        [ngClass]="{'border-red-700 border-2': !innerControl.valid && (innerControl.dirty || innerControl.touched)}"
+        [formControl]="innerControl"
+        [value]="innerValue"
+        [id]="key"
+        [rows]="rows"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        (input)="setValue($event.target['value'])"
+        (focusout)="innerControl.markAsTouched()">
+    </textarea>
+    <ng-container *ngIf="!innerControl.valid && (innerControl.dirty || innerControl.touched)">
+        <p class="text-red-500 text-xs italic">{{('formErrors.' + Object.keys(innerControl.errors)[0]) | translate : {var: innerControl.errors[Object.keys(innerControl.errors)[0]]} }}</p>
+    </ng-container>
+</ng-container>

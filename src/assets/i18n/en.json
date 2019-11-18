@@ -1,10 +1,14 @@
 {
   "labels": {
+    "endDate": "End date",
+    "endsSameDay": "One day event",
+    "description": "Description",
     "name": "Name",
-    "startDate": "Start date",
-    "endDate": "End date"
+    "startDate": "Start date"
   },
   "formErrors": {
-    "required": "Please fill out this field"
+    "required": "Please fill out this field",
+    "minlength": "Field requires at least {{var.requiredLength}} characters",
+    "maxlength": "Field is limited to {{var.requiredLength}} characters"
   }
 }
