@@ -11,14 +11,40 @@ import { EventEntity }       from '../../../core/entities';
 })
 export class MainComponent implements OnInit {
 
-  public eventList: any[] = [];
+  public eventList: EventEntity[] = [
+    {
+      startDate: '21-12-2019',
+      endDate: '22-12-2019',
+      attendantList: [],
+      createdBy: 'jalu',
+      createdDate: '19-11-2019',
+      description: 'Una fum fum normal en la marinada, ok no',
+      endsSameDay: false,
+      isPublic: false,
+      managerList: [{name: 'Javi'}, {name: 'Javi'}, {name: 'Javi'}, {name: 'Javi'}],
+      name: 'Fum fum',
+      taskList: []
+    },
+    {
+      startDate: '21-12-2019',
+      endDate: '22-12-2019',
+      attendantList: [],
+      createdBy: 'jalu',
+      createdDate: '19-11-2019',
+      description: 'Una fum fum normal en la marinada, ok no',
+      endsSameDay: false,
+      isPublic: true,
+      managerList: [{name: 'Javi'}, {name: 'Javi'}, {name: 'Javi'}, {name: 'Javi'}],
+      name: 'Fum fum',
+      taskList: []
+    }
+  ];
   public loading = false;
 
   constructor(private modal: ModalFactory) {
   }
 
   ngOnInit() {
-    this.createNewEvent();
   }
 
   public createNewEvent() {

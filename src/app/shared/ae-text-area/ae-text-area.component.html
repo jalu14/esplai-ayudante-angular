@@ -10,7 +10,6 @@
         [id]="key"
         [rows]="rows"
         [placeholder]="placeholder"
-        [disabled]="disabled"
         (input)="setValue($event.target['value'])"
         (focusout)="innerControl.markAsTouched()">
     </textarea>

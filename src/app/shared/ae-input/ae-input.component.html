@@ -10,7 +10,6 @@
         [id]="key"
         [type]="type"
         [placeholder]="placeholder"
-        [disabled]="disabled"
         (input)="setValue($event.target['value'])"
         (focusout)="innerControl.markAsTouched()">
     <ng-container *ngIf="!innerControl.valid && (innerControl.dirty || innerControl.touched)">
