@@ -15,6 +15,7 @@ import { AeDatepickerComponent }    from './ae-datepicker/ae-datepicker.componen
 import { TranslateModule }          from '@ngx-translate/core';
 import { AeSwitchComponent }        from './ae-switch/ae-switch.component';
 import { AeTextAreaComponent }      from './ae-text-area/ae-text-area.component';
+import { AeTooltipDirective }       from './ae-tooltip/ae-tooltip.directive';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { AeTextAreaComponent }      from './ae-text-area/ae-text-area.component'
     AeDatepickerComponent,
     AeSwitchComponent,
     AeTextAreaComponent,
+    AeTooltipDirective,
   ],
   exports: [
     AeNavBarComponent,
@@ -45,10 +47,11 @@ import { AeTextAreaComponent }      from './ae-text-area/ae-text-area.component'
     AeModalComponent,
     AeSwitchComponent,
     AeTextAreaComponent,
+    AeTooltipDirective,
   ],
   entryComponents: [
-    CustomModalComponent
-  ]
+    CustomModalComponent,
+  ],
 })
 export class SharedModule {
 }
