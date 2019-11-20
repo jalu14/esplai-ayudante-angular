@@ -25,6 +25,7 @@ export class AeTooltipDirective {
   }
 
   @HostListener('mouseleave') onMouseLeave() {
+    this.mouseOnTooltip = false;
     if (this.tooltip) {
       this.hide();
     }
