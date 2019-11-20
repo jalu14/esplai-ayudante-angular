@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateEventModal }  from '../modals/create-event/create-event.modal';
+import { CreateEventModal }  from '../modals/create-event.modal';
 import { ModalFactory }      from '../../../services/modal/modal.factory';
 import { ModalResponse }     from '../../../core/models';
 import { EventEntity }       from '../../../core/entities';

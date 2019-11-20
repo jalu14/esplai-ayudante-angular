@@ -1,6 +1,6 @@
 import { Component }     from '@angular/core';
-import { ModalTemplate } from '../../../../core/template/modal-template';
-import { EventEntity }   from '../../../../core/entities';
+import { ModalTemplate } from '../../../core/template/modal-template';
+import { EventEntity }   from '../../../core/entities';
 
 @Component({
   template: `
@@ -25,8 +25,8 @@ import { EventEntity }   from '../../../../core/entities';
         </div>
         <div class="w-full mb-1 mt-2">
           <ae-text-area [model]="entity"
-                    key="description"
-                    [placeholder]="'Short description'">
+                        key="description"
+                        [placeholder]="'Short description'">
           </ae-text-area>
         </div>
       </div>

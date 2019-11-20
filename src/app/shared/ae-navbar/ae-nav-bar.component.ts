@@ -12,6 +12,7 @@ export class AeNavBarComponent implements OnInit {
   public socialUser: SocialUser;
 
   constructor(private auth: AuthUserService) {
+    this.socialUser = this.auth.currentUser;
     this.auth.userAuthChanged.subscribe((value) => {
       this.socialUser = value;
     });

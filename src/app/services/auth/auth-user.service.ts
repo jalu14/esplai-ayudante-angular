@@ -12,6 +12,9 @@ export class AuthUserService {
 
   constructor(private ngxAuth: AuthService,
               private router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('token'));
+    if (!this.currentUser) return;
+    this.userAuthChanged.next(this.currentUser);
   }
 
   public signIn() {
@@ -19,7 +22,7 @@ export class AuthUserService {
       .then((data) => {
         console.log(data);
         this.currentUser = data;
-        localStorage.setItem('token', '1');
+        localStorage.setItem('token', JSON.stringify(this.currentUser));
         this.userAuthChanged.next(this.currentUser);
         this.router.navigate(['']);
       });
