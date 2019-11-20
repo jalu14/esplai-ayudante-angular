@@ -1,4 +1,6 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { SocialUser }                             from 'angularx-social-login';
+import { AuthUserService }                        from '../../services/auth/auth-user.service';
 
 @Component({
   selector: 'ae-user-navbar',
@@ -7,16 +9,21 @@ import {Component, HostListener, OnInit} from '@angular/core';
 })
 export class AeUserNavbarComponent implements OnInit {
 
+  @Input() public user: SocialUser;
+
+  public dropdownActive: boolean = false;
   @HostListener('window:keydown.escape', [])
   keyDown() {
     this.dropdownActive = false;
   }
 
-  public dropdownActive = false;
-
-  constructor() { }
+  constructor(private auth: AuthUserService) { }
 
   ngOnInit() {
+  }
+
+  public signOut() {
+    this.auth.signOut();
   }
 
 }

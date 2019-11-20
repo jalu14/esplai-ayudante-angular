@@ -1,4 +1,5 @@
-<nav class="fixed flex items-center justify-between flex-wrap bg-gray-700 w-full z-10">
+<nav *ngIf="socialUser"
+     class="fixed flex items-center justify-between flex-wrap bg-gray-700 w-full z-10">
     <div class="hidden sm:flex items-center flex-shrink-0 text-white bg-gray-800">
         <a routerLink="/" class="font-semibold text-xl tracking-tight py-3 px-8">Bons Amics</a>
     </div>
@@ -14,9 +15,17 @@
             </a>
         </div>
         <div>
-            <ae-user-navbar></ae-user-navbar>
+            <ae-user-navbar [user]="socialUser"></ae-user-navbar>
         </div>
     </div>
 </nav>
 
-<ng-content></ng-content>
+<div class="flex flex-col w-full h-full">
+    <div *ngIf="socialUser"
+         class="w-full"
+         style="min-height: 54px">
+    </div>
+    <div class="w-full h-full mx-auto" [class.container]="socialUser">
+        <ng-content></ng-content>
+    </div>
+</div>

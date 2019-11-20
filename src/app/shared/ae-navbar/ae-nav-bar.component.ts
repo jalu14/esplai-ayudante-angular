@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SocialUser }        from 'angularx-social-login';
+import { AuthUserService }   from '../../services/auth/auth-user.service';
 
 @Component({
   selector: 'ae-navbar',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AeNavBarComponent implements OnInit {
 
-  constructor() { }
+  public socialUser: SocialUser;
+
+  constructor(private auth: AuthUserService) {
+    this.auth.userAuthChanged.subscribe((value) => {
+      this.socialUser = value;
+    });
+  }
 
   ngOnInit() {
   }
