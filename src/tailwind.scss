@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 
+html, body {
+  @apply bg-gray-200;
+}
+
 .nav {
   @apply pt-4 pb-3 px-5 inline-block mt-0 font-extrabold text-gray-400;
 }
