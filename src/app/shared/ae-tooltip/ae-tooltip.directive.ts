@@ -31,6 +31,13 @@ export class AeTooltipDirective {
     }
   }
 
+  @HostListener('window:scroll') onScroll() {
+    this.mouseOnTooltip = false;
+    if (this.tooltip) {
+      this.hide();
+    }
+  }
+
   private show() {
     this.create();
     this.setPosition();
