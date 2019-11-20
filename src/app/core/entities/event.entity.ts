@@ -1,4 +1,6 @@
-export class EventEntity {
+import { BaseEntity } from './base.entity';
+
+export class EventEntity extends BaseEntity {
   public name: string;
   public description: string;
   public isPublic: boolean;
@@ -7,15 +9,13 @@ export class EventEntity {
   public startDate: string;
   public endDate: string;
 
-  public createdBy: string;
-  public createdDate: string;
-
   public managerList: any[];
   public attendantList: any[];
 
   public taskList: any[];
 
   constructor(element: any | EventEntity) {
+    super(element);
     this.name = element.name || null;
     this.description = element.description || null;
     this.isPublic = element.isPublic || false;

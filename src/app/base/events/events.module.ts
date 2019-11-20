@@ -1,28 +1,30 @@
-import {CommonModule}         from '@angular/common';
-import {FormsModule}          from '@angular/forms';
-import {NgModule}             from '@angular/core';
-import {EventsRouting}        from './events.routing';
+import { CommonModule }       from '@angular/common';
+import { FormsModule }        from '@angular/forms';
+import { NgModule }           from '@angular/core';
+import { eventRoutes }        from './events.routing';
 import { MainComponent }      from './main/main.component';
-import {SharedModule}         from '../../shared/shared.module';
+import { SharedModule }       from '../../shared/shared.module';
 import { CreateEventModal }   from './modals/create-event/create-event.modal';
 import { ModalFactoryModule } from '../../services/modal/modal.factory.module';
+import { DetailComponent }    from './detail/detail.component';
+import { RouterModule }       from '@angular/router';
 
 @NgModule({
   imports: [
-    FormsModule,
     CommonModule,
+    FormsModule,
+    RouterModule.forChild(eventRoutes),
     ModalFactoryModule.forRoot(),
-
-    EventsRouting,
     SharedModule,
   ],
   declarations: [
     MainComponent,
-    CreateEventModal
+    CreateEventModal,
+    DetailComponent,
   ],
   entryComponents: [
-    CreateEventModal
-  ]
+    CreateEventModal,
+  ],
 })
 export class EventsModule {
 }

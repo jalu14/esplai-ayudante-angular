@@ -3,6 +3,7 @@ import { CreateEventModal }  from '../modals/create-event/create-event.modal';
 import { ModalFactory }      from '../../../services/modal/modal.factory';
 import { ModalResponse }     from '../../../core/models';
 import { EventEntity }       from '../../../core/entities';
+import { Router }            from '@angular/router';
 
 @Component({
   selector: 'ae-main',
@@ -13,6 +14,7 @@ export class MainComponent implements OnInit {
 
   public eventList: EventEntity[] = [
     {
+      id: 1,
       startDate: '21-12-2019',
       endDate: '22-12-2019',
       attendantList: [],
@@ -26,6 +28,7 @@ export class MainComponent implements OnInit {
       taskList: []
     },
     {
+      id: 2,
       startDate: '21-12-2019',
       endDate: '22-12-2019',
       attendantList: [],
@@ -39,6 +42,7 @@ export class MainComponent implements OnInit {
       taskList: []
     },
     {
+      id: 3,
       startDate: '21-12-2019',
       endDate: '22-12-2019',
       attendantList: [],
@@ -52,6 +56,7 @@ export class MainComponent implements OnInit {
       taskList: []
     },
     {
+      id: 4,
       startDate: '21-12-2019',
       endDate: '22-12-2019',
       attendantList: [],
@@ -67,10 +72,15 @@ export class MainComponent implements OnInit {
   ];
   public loading = false;
 
-  constructor(private modal: ModalFactory) {
+  constructor(private modal: ModalFactory,
+              private router: Router) {
   }
 
   ngOnInit() {
+  }
+
+  public navEvent(eventId: number) {
+    this.router.navigate(['events/' + eventId]);
   }
 
   public createNewEvent() {
