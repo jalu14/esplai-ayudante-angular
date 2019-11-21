@@ -1,1 +1,14 @@
-<p>detail works!</p>
+<ng-container *ngIf="event; else noEntity">
+    <div class="flex justify-between items-baseline mt-3 mx-3 md:mx-0">
+        <span class="text-2xl font-semibold text-gray-700">{{event.name}}</span>
+    </div>
+</ng-container>
+
+<ng-template #noEntity>
+    <ng-container *ngIf="isLoading; else notFound">
+
+    </ng-container>
+    <ng-template #notFound>
+
+    </ng-template>
+</ng-template>

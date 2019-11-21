@@ -16,15 +16,19 @@ import { TranslateModule }          from '@ngx-translate/core';
 import { AeSwitchComponent }        from './ae-switch/ae-switch.component';
 import { AeTextAreaComponent }      from './ae-text-area/ae-text-area.component';
 import { AeTooltipDirective }       from './ae-tooltip/ae-tooltip.directive';
+import { NgSelectModule }           from '@ng-select/ng-select';
+import { AeSelectComponent } from './ae-select/ae-select.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
+
+    NgSelectModule,
     FlatpickrModule.forRoot(),
     TranslateModule,
-    ReactiveFormsModule,
   ],
   declarations: [
     AeNavBarComponent,
@@ -38,6 +42,7 @@ import { AeTooltipDirective }       from './ae-tooltip/ae-tooltip.directive';
     AeSwitchComponent,
     AeTextAreaComponent,
     AeTooltipDirective,
+    AeSelectComponent,
   ],
   exports: [
     AeNavBarComponent,
@@ -48,6 +53,7 @@ import { AeTooltipDirective }       from './ae-tooltip/ae-tooltip.directive';
     AeSwitchComponent,
     AeTextAreaComponent,
     AeTooltipDirective,
+    AeSelectComponent,
   ],
   entryComponents: [
     CustomModalComponent,

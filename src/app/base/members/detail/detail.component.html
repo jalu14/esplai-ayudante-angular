@@ -1,0 +1,17 @@
+<div class="flex justify-between items-baseline mt-3 mx-3 md:mx-0">
+    <span
+        class="text-2xl font-semibold text-gray-700">{{member.givenName}} {{member.middleName}} {{member.surName}}</span>
+</div>
+<div class="flex w-full flex-wrap">
+    <div class="w-2/12">
+        <ae-select [model]="member"
+                   key="allergyList"
+                   label="allergies"
+                   [multiple]="true"
+                   [closeOnSelect]="false"
+                   [optionList]="allergyList"
+                   type="tag">
+        </ae-select>
+    </div>
+    <pre class="w-full">{{member | json}}</pre>
+</div>

@@ -8,7 +8,7 @@ export const eventRoutes: Routes = [
     component: MainComponent,
   },
   {
-    path: ':eventId',
+    path: ':id',
     component: DetailComponent,
   },
 ];

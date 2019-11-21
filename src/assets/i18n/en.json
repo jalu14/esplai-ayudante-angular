@@ -1,8 +1,10 @@
 {
   "labels": {
+    "allergy": "Allergy",
+    "allergies": "Allergies",
+    "description": "Description",
     "endDate": "End date",
     "endsSameDay": "One day event",
-    "description": "Description",
     "name": "Name",
     "startDate": "Start date"
   },

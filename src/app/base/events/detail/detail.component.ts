@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventEntity }       from '../../../core/entities';
+import { ActivatedRoute }    from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  public event: EventEntity;
+  public isLoading: boolean = true;
+
+  private eventId: number;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.eventId = params.id;
+    });
   }
 
 }

@@ -1,0 +1,30 @@
+<ng-container>
+    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-1" [for]="key">
+        {{'labels.' + (label || key) | translate}}
+    </label>
+    <ng-container *ngIf="type === 'normal'; else tagTemplate">
+        <ng-select
+            class="rounded-sm mb-1 bg-gray-200 text-gray-700 focus:bg-gray-700 focus:text-white transition-250 focus:outline-none"
+            [items]="optionList"
+            bindLabel="name"
+            [multiple]="multiple"
+            [(ngModel)]="innerValue">
+        </ng-select>
+    </ng-container>
+    <ng-template #tagTemplate>
+        <ng-select
+            class="rounded-sm mb-1 bg-gray-200 text-gray-700 focus:bg-gray-700 focus:text-white transition-250 focus:outline-none"
+            [items]="optionList"
+            bindLabel="name"
+            [multiple]="multiple"
+            [closeOnSelect]="closeOnSelect"
+            [loading]="isLoading"
+            [addTag]="addTagPromise"
+            [(ngModel)]="innerValue"
+            (ngModelChange)="setValue()">
+            <ng-template ng-tag-tmp let-search="searchTerm">
+                <b>create new</b>: {{search}}
+            </ng-template>
+        </ng-select>
+    </ng-template>
+</ng-container>
