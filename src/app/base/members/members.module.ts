@@ -7,6 +7,7 @@ import { SharedModule }       from '../../shared/shared.module';
 import { DetailComponent }    from './detail/detail.component';
 import { CreateMemberModal }  from './modals/create-member.modal';
 import { ModalFactoryModule } from '../../services/modal/modal.factory.module';
+import { MemberCardComponent } from './partials/member-card/member-card.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,8 @@ import { ModalFactoryModule } from '../../services/modal/modal.factory.module';
     DetailComponent,
 
     CreateMemberModal,
+
+    MemberCardComponent,
   ],
   entryComponents: [
     CreateMemberModal,

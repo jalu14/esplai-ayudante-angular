@@ -16,8 +16,10 @@ export class DetailComponent implements OnInit {
     givenName: 'Javi',
     middleName: 'Luna',
     surName: 'G.',
+    gender: 'male',
+    currentBranch: 5,
+    isInstructor: true,
     birthDate: '24-03-1996',
-    allergyList: [{id: 1, name: 'Plátano'}],
     description: '',
   };
 

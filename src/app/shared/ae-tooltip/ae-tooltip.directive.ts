@@ -110,12 +110,12 @@ export class AeTooltipDirective {
 
     if (this.placement === 'left') {
       top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
-      left = hostPos.left - tooltipPos.width - this.offset;
+      left = hostPos.left - tooltipPos.width - this.offset + this.offsetLeft * 2;
     }
 
     if (this.placement === 'right') {
       top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
-      left = hostPos.right + this.offset;
+      left = hostPos.right + this.offset + this.offsetLeft * 2;
     }
 
     // 스크롤이 발생한 경우, tooltip 요소의 top에 세로 스크롤 좌표값을 반영하여야 한다.
