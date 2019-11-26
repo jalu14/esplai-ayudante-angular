@@ -1,5 +1,5 @@
 <nav *ngIf="socialUser"
-     class="fixed flex items-center justify-between flex-wrap bg-gray-700 w-full z-10">
+     class="fixed flex items-center justify-between flex-wrap bg-gray-700 w-full z-10" style="height: 54px">
     <div class="hidden sm:flex items-center flex-shrink-0 text-white bg-gray-800">
         <a routerLink="/" class="font-semibold text-xl tracking-tight py-3 px-8">Bons Amics</a>
     </div>
@@ -25,7 +25,7 @@
          class="w-full"
          style="min-height: 54px">
     </div>
-    <div class="w-full h-full mx-auto" [class.container]="socialUser">
+    <div class="relative w-full h-full mx-auto" [class.container]="socialUser">
         <ng-content></ng-content>
     </div>
 </div>

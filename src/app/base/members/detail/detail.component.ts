@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
     createdDate: '21-11-2019',
     givenName: 'Javi',
     middleName: 'Luna',
-    surName: 'G.',
+    surName: 'Garvinicio',
     gender: 'male',
     currentBranch: 5,
     isInstructor: true,

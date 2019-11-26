@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
       surName: 'Reverter',
       gender: 'female',
       currentBranch: 2,
-      isInstructor: true,
+      isInstructor: false,
       birthDate: '01-01-1999',
       description: '',
     },
