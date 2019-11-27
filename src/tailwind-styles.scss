@@ -689,7 +689,10 @@ html, body {
 }
 
 .dropdown ul li {
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .dropdown ul li:hover {
