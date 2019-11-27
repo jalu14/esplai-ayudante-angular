@@ -1,4 +1,12 @@
 {
+  "branches": {
+    "grumets": "Grumets",
+    "ullsoberts": "Ulls Oberts",
+    "maoberta": "Mà Oberta",
+    "corobert": "Cor Obert",
+    "corobert2": "Cor Obert II",
+    "joves": "Joves"
+  },
   "labels": {
     "allergy": "Allergy",
     "allergies": "Allergies",

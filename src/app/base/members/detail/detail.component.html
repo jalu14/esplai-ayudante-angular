@@ -1,12 +1,24 @@
 <div class="relative">
-    <div class="sticky flex bg-gray-700 md:rounded-b justify-between items-baseline p-4" style="top: 54px;">
-        <span class="text-2xl font-semibold text-gray-200">{{member.givenName}} {{member.middleName}}
-            {{member.surName}}</span>
+    <div class="sticky flex text-gray-200 bg-gray-700 md:rounded-b justify-between items-baseline p-4" style="top: 54px;">
+        <div class="flex">
+            <span class="text-2xl font-semibold">
+                {{member.givenName}} {{member.middleName}} {{member.surName}}
+            </span>
+            <!-- Gender -->
+            <span class="hidden sm:flex items-center ml-2">
+                <i [hidden]="member.gender === 'female'">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 384 384" xmlns="http://www.w3.org/2000/svg"><path d="M383.793 13.938c-.176-1.38-.48-2.708-.984-3.954-.016-.03-.016-.074-.024-.113 0-.008-.008-.016-.015-.023-.555-1.313-1.313-2.504-2.168-3.61-.211-.261-.418-.52-.641-.765-.914-1.032-1.906-1.985-3.059-2.762-.03-.024-.07-.031-.101-.055-1.114-.734-2.344-1.289-3.633-1.726-.32-.114-.633-.211-.961-.297C370.855.266 369.465 0 368 0H256c-8.832 0-16 7.168-16 16s7.168 16 16 16h73.367l-95.496 95.496C208.406 107.13 177.055 96 144 96 64.602 96 0 160.602 0 240s64.602 144 144 144 144-64.602 144-144c0-33.04-11.121-64.383-31.504-89.871L352 54.625V128c0 8.832 7.168 16 16 16s16-7.168 16-16V16c0-.336-.078-.656-.098-.984a16.243 16.243 0 00-.109-1.079zM144 352c-61.762 0-112-50.238-112-112s50.238-112 112-112c29.902 0 58.055 11.64 79.223 32.734C244.359 181.945 256 210.098 256 240c0 61.762-50.238 112-112 112zm0 0"/></svg>
+                </i>
+                <i [hidden]="member.gender === 'male'">
+                    <svg class="w-6 h-6 fill-current" height="512" viewBox="-56 0 384 384" width="512" xmlns="http://www.w3.org/2000/svg"><path d="M272 136C272 61.008 210.992 0 136 0S0 61.008 0 136c0 69.566 52.535 127.016 120 134.977V304H88c-8.832 0-16 7.168-16 16s7.168 16 16 16h32v32c0 8.832 7.168 16 16 16s16-7.168 16-16v-32h32c8.832 0 16-7.168 16-16s-7.168-16-16-16h-32v-33.023c67.465-7.961 120-65.41 120-134.977zm-240 0C32 78.656 78.656 32 136 32s104 46.656 104 104-46.656 104-104 104S32 193.344 32 136zm0 0"/></svg>
+                </i>
+            </span>
+        </div>
         <div class="inline-flex" ae-dropdown>
             <button class="text-gray-400 bg-gray-800 hover:bg-gray-600 p-2 rounded">
                 <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12a2 2 0 110-4 2 2 0 010 4zm0-6a2 2 0 110-4 2 2 0 010 4zm0 12a2 2 0 110-4 2 2 0 010 4z"/></svg>
             </button>
-            <ul style="top: 45px">
+            <ul class="text-black" style="top: 45px">
                 <li>Editar</li>
                 <li class="text-red-600">Borrar</li>
             </ul>
@@ -19,13 +31,15 @@
                 <div class="px-2 md:px-0">
                     <div class="flex flex-wrap -mx-2">
                         <div class="w-full lg:w-6/12 px-2">
-                            <div class="bg-gray-100 rounded shadow h-40">
-                                {{member.currentBranch}}
+                            <div class="flex flex-col items-center justify-center bg-{{member.currentBranch}} text-white rounded shadow h-40">
+                                <span class="text-2xl">{{'branches.' + (member.currentBranch | branchify) | translate}}</span>
+                                <span class="text-md">lleva desde Grumets</span>
                             </div>
                         </div>
                         <div class="w-full lg:w-6/12 mt-3 lg:mt-0 px-2">
-                            <div class="flex justify-center items-center bg-gray-100 rounded shadow h-40">
-                                <span class="text-2xl">{{member.birthDate}}</span>
+                            <div class="flex justify-center items-center bg-gray-100 text-gray-800 rounded shadow h-40">
+                                <svg class="h-10 w-10 fill-current mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M14.83 4H20v6h-1v10H1V10H0V4h5.17A3 3 0 0110 .76 3 3 0 0114.83 4zM8 10H3v8h5v-8zm4 0v8h5v-8h-5zM8 6H2v2h6V6zm4 0v2h6V6h-6zM8 4a1 1 0 100-2 1 1 0 000 2zm4 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+                                <span class="text-2xl font-semibold">{{member.birthDate | dateify}}</span>
                             </div>
                         </div>
                         <div class="w-full px-2 mt-3">
@@ -41,8 +55,26 @@
                             </div>
                         </div>
                         <div class="w-full px-2 mt-3">
-                            <div class="bg-gray-100 rounded shadow px-3 py-2 h-40">
+                            <div class="flex flex-col bg-gray-100 rounded shadow px-3 py-2">
                                 <span class="text-2xl">Documents</span>
+                                <div class="flex flex-grow mt-2 items-center -mx-2">
+                                    <ng-container *ngFor="let document of member.documentList">
+                                        <div class="px-2">
+                                            <div class="flex flex-col items-center justify-center h-32 w-24 bg-gray-300 text-white rounded hover:shadow-lg transition-250"
+                                                 [ae-tooltip]="document.name" delay="150">
+                                                <div class="flex items-center justify-center bg-white rounded-full h-12 w-12 shadow-md">
+                                                    <i [hidden]="!document.ok">
+                                                        <svg class="w-6 h-6 text-green-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                                                    </i>
+                                                    <i [hidden]="document.ok">
+                                                        <svg class="w-6 h-6 text-red-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+                                                    </i>
+                                                </div>
+                                                <span class="mt-2 w-20 text-gray-700 font-semibold ellipsis">{{document.name}}</span>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,21 +88,6 @@
             </div>
         </div>
     </div>
-    <!--    <div class="flex mx-2 md:mx-0 mt-4">-->
-    <!--        <div class="flex flex-wrap w-12/12 lg:w-8/12 -mx-2">-->
-    <!--            <div class="w-full lg:w-6/12 shadow bg-gray-100 rounded mx-2 p-4">-->
-    <!--                {{member.currentBranch}}-->
-    <!--            </div>-->
-    <!--            <div class="flex justify-center w-full lg:w-6/12 shadow bg-gray-100 rounded mx-2 p-4">-->
-    <!--                <span class="text-2xl">{{member.birthDate}}</span>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--        <div class="flex w-12/12 lg:w-4/12 -mx-2">-->
-    <!--            <div class="w-full h-48 shadow bg-gray-100 rounded px-3 py-2">-->
-    <!--                <span class="text-2xl">Allergies</span>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
 </div>
 
 <!--        <div class="w-2/12">-->

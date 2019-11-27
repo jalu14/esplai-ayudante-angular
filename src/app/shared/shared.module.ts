@@ -12,13 +12,14 @@ import { CustomModalComponent }     from './ae-modal/partials/custom-modal/custo
 import { AeInputComponent }         from './ae-input/ae-input.component';
 import { FullWidthFooterComponent } from './ae-modal/partials/footers/full-width-footer/full-width-footer.component';
 import { AeDatepickerComponent }    from './ae-datepicker/ae-datepicker.component';
-import { TranslateModule }          from '@ngx-translate/core';
-import { AeSwitchComponent }        from './ae-switch/ae-switch.component';
-import { AeTextAreaComponent }      from './ae-text-area/ae-text-area.component';
-import { AeTooltipDirective }       from './ae-tooltip/ae-tooltip.directive';
-import { NgSelectModule }           from '@ng-select/ng-select';
-import { AeSelectComponent } from './ae-select/ae-select.component';
+import { TranslateModule }     from '@ngx-translate/core';
+import { AeSwitchComponent }   from './ae-switch/ae-switch.component';
+import { AeTextAreaComponent } from './ae-text-area/ae-text-area.component';
+import { AeTooltipDirective }  from './ae-tooltip/ae-tooltip.directive';
+import { NgSelectModule }      from '@ng-select/ng-select';
+import { AeSelectComponent }   from './ae-select/ae-select.component';
 import { AeDropdownDirective } from './ae-dropdown/ae-dropdown.directive';
+import { PipesModule }         from './pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -30,6 +31,8 @@ import { AeDropdownDirective } from './ae-dropdown/ae-dropdown.directive';
     NgSelectModule,
     FlatpickrModule.forRoot(),
     TranslateModule,
+
+    PipesModule
   ],
   declarations: [
     AeNavBarComponent,

@@ -12,7 +12,7 @@ export class AeTooltipDirective {
   private mouseOnTooltip = false;
   // 호스트 요소와 tooltip 요소 간의 거리
   private offset = 5;
-  private offsetLeft = 4;
+  private offsetLeft = 10;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
   }
@@ -99,7 +99,7 @@ export class AeTooltipDirective {
     let top, left;
 
     if (this.placement === 'top') {
-      top = hostPos.top - tooltipPos.height - this.offset;
+      top = hostPos.top - tooltipPos.height - this.offset - 5;
       left = hostPos.left + (hostPos.width - tooltipPos.width) / 2 + this.offsetLeft;
     }
 

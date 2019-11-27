@@ -12,6 +12,7 @@ export class MemberEntity extends BaseEntity {
 
   public contactList?: any[];
   public allergyList?: any[];
+  public documentList?: any[];
 
   constructor(element: any | MemberEntity) {
     super(element);
@@ -27,5 +28,6 @@ export class MemberEntity extends BaseEntity {
 
     this.contactList = element.contactList ? element.contactList.map(c => c) : [];
     this.allergyList = element.allergyList ? element.allergyList.map(a => a) : [];
+    this.documentList = element.documentList ? element.documentList.map(d => d) : [];
   }
 }

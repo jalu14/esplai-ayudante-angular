@@ -21,6 +21,10 @@ export class DetailComponent implements OnInit {
     isInstructor: true,
     birthDate: '24-03-1996',
     description: '',
+    documentList: [
+      {id: 1, name: 'Carta alfa', ok: false},
+      {id: 2, name: 'Inscripción', ok: true},
+    ]
   };
 
   public allergyList = [
