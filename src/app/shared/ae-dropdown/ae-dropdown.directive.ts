@@ -31,9 +31,20 @@ export class AeDropdownDirective implements OnInit {
 
   private show() {
     this.content.hidden = false;
+    this.fixLimits();
   }
 
   private hide() {
     this.content.hidden = true;
+    this.resetLimits();
+  }
+
+  private fixLimits() {
+    const contDom = this.content.getBoundingClientRect();
+    if (contDom['x'] + contDom.width > window.innerWidth - 20) this.content.style.right = '0px';
+  }
+
+  private resetLimits() {
+    this.content.style.right = undefined;
   }
 }
