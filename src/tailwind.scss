@@ -25,4 +25,22 @@ html, body {
   }
 }
 
+.dropdown {
+  @apply relative;
+  button{
+    &:focus {
+      @apply outline-none;
+    }
+  }
+  ul {
+    @apply absolute bg-white rounded shadow cursor-pointer overflow-hidden;
+    li {
+      @apply p-2;
+      &:hover {
+        @apply bg-gray-200;
+      }
+    }
+  }
+}
+
 @tailwind utilities;

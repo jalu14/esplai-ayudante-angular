@@ -671,6 +671,31 @@ html, body {
   color: #edf2f7;
 }
 
+.dropdown {
+  position: relative;
+}
+
+.dropdown button:focus {
+  outline: 0;
+}
+
+.dropdown ul {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.dropdown ul li {
+  padding: 0.5rem;
+}
+
+.dropdown ul li:hover {
+  background-color: #edf2f7;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

@@ -18,6 +18,7 @@ import { AeTextAreaComponent }      from './ae-text-area/ae-text-area.component'
 import { AeTooltipDirective }       from './ae-tooltip/ae-tooltip.directive';
 import { NgSelectModule }           from '@ng-select/ng-select';
 import { AeSelectComponent } from './ae-select/ae-select.component';
+import { AeDropdownDirective } from './ae-dropdown/ae-dropdown.directive';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { AeSelectComponent } from './ae-select/ae-select.component';
     AeSwitchComponent,
     AeTextAreaComponent,
     AeTooltipDirective,
+    AeDropdownDirective,
     AeSelectComponent,
   ],
   exports: [
@@ -53,6 +55,7 @@ import { AeSelectComponent } from './ae-select/ae-select.component';
     AeSwitchComponent,
     AeTextAreaComponent,
     AeTooltipDirective,
+    AeDropdownDirective,
     AeSelectComponent,
   ],
   entryComponents: [

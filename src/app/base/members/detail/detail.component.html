@@ -2,13 +2,14 @@
     <div class="sticky flex bg-gray-700 md:rounded-b justify-between items-baseline p-4" style="top: 54px;">
         <span class="text-2xl font-semibold text-gray-200">{{member.givenName}} {{member.middleName}}
             {{member.surName}}</span>
-        <div class="inline-flex">
-            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
-                Edit
+        <div class="inline-flex" ae-dropdown>
+            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
+                ...
             </button>
-            <button class="bg-red-400 hover:bg-red-300 text-gray-200 font-semibold py-2 px-4 rounded-r">
-                Delete
-            </button>
+            <ul style="top: 45px">
+                <li>Editar</li>
+                <li>Borrar</li>
+            </ul>
         </div>
     </div>
     <div class="px-2 md:px-0 mt-4">
@@ -37,6 +38,11 @@
                                               rows="5"
                                               [placeholder]="'Short description'">
                                 </ae-text-area>
+                            </div>
+                        </div>
+                        <div class="w-full px-2 mt-3">
+                            <div class="bg-gray-100 rounded shadow px-3 py-2 h-40">
+                                <span class="text-2xl">Documents</span>
                             </div>
                         </div>
                     </div>
