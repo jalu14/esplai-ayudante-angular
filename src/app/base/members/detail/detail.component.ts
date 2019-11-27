@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { MemberEntity }      from '../../../core/entities';
+import { ModalFactory }      from '../../../services/modal/modal.factory';
 
 @Component({
   selector: 'app-detail',
@@ -33,12 +34,18 @@ export class DetailComponent implements OnInit {
 
   private memberId: number;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private modal: ModalFactory) {
   }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.memberId = params.id;
     });
+  }
+
+  public delete() {
+    this.modal.confirm('error', 'borrar')
+      .subscribe(res => console.log(res));
   }
 }

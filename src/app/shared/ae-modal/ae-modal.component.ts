@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ModalService }                                                                       from '../../services/modal/modal.service';
-import { CustomModalComponent }                                                               from './partials/custom-modal/custom-modal.component';
+import { CustomModalComponent }                                                               from './modals/custom-modal/custom-modal.component';
 
 @Component({
   selector: 'ae-modal',
@@ -17,7 +17,7 @@ export class AeModalComponent implements OnInit {
 
   public ngOnInit() {
     this.modal.getModal().subscribe((modal) => {
-      this.createNewModal(modal);
+      this.createCustomModal(modal);
     });
     this.modal.getResponse().subscribe(() => {
       this.removeLast();
@@ -28,7 +28,16 @@ export class AeModalComponent implements OnInit {
     this.modal.close({message: 'backdrop', entity: null})
   }
 
-  private createNewModal(modal: { component: any, params: any, size: any }) {
+  private createNewModal(modal) {
+    let inputProviders = [];
+    if (modal.params) {
+      inputProviders = Object.keys(modal.params).map((inputName) => {
+        return {provide: inputName, useValue: modal.params[inputName]};
+      });
+    }
+  }
+
+  private createCustomModal(modal: { component: any, params: any, size: any }) {
     let inputProviders = [];
     if (modal.params) {
       inputProviders = Object.keys(modal.params).map((inputName) => {

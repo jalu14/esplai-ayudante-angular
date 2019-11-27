@@ -9,6 +9,10 @@ export class ModalFactory {
               private resolver: ComponentFactoryResolver) {
   }
 
+  public confirm(type: 'primary' | 'warning' | 'error', title: string) {
+    return this.modal.open({size: 'md', ignoreBackDropClick: true, params: {type, title}});
+  }
+
   public custom(component: any, config: ModalConfig, entity: any, params?: any): Observable<any> {
     const parsedComponent = this.getTemplateRef(component);
     return this.modal.open({
