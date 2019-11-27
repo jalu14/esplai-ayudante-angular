@@ -1,7 +1,7 @@
 <div class="relative">
-    <div class="sticky flex bg-gray-600 md:rounded justify-between items-baseline p-4 md:mt-4" style="top: 54px;">
-    <span
-        class="text-2xl font-semibold text-gray-200">{{member.givenName}} {{member.middleName}} {{member.surName}}</span>
+    <div class="sticky flex bg-gray-700 md:rounded-b justify-between items-baseline p-4" style="top: 54px;">
+        <span class="text-2xl font-semibold text-gray-200">{{member.givenName}} {{member.middleName}}
+            {{member.surName}}</span>
         <div class="inline-flex">
             <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
                 Edit
@@ -11,21 +11,60 @@
             </button>
         </div>
     </div>
-    <div class="flex mx-2 md:mx-0 mt-4">
-        <div class="flex flex-wrap w-12/12 lg:w-8/12 -mx-2">
-            <div class="w-full lg:w-6/12 shadow bg-gray-100 rounded mx-2 p-4">
-                {{member.currentBranch}}
+    <div class="px-2 md:px-0 mt-4">
+        <div class="flex flex-wrap -mx-2">
+            <!-- Columna izquierda -->
+            <div class="w-full lg:w-8/12 px-2">
+                <div class="px-2 md:px-0">
+                    <div class="flex flex-wrap -mx-2">
+                        <div class="w-full lg:w-6/12 px-2">
+                            <div class="bg-gray-100 rounded shadow h-40">
+                                {{member.currentBranch}}
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 mt-3 lg:mt-0 px-2">
+                            <div class="flex justify-center items-center bg-gray-100 rounded shadow h-40">
+                                <span class="text-2xl">{{member.birthDate}}</span>
+                            </div>
+                        </div>
+                        <div class="w-full px-2 mt-3">
+                            <div class="bg-gray-100 rounded shadow px-3 py-2">
+                                <span class="text-2xl">Description</span>
+                                <ae-text-area class="mt-2"
+                                              [model]="member"
+                                              key="description"
+                                              label=""
+                                              rows="5"
+                                              [placeholder]="'Short description'">
+                                </ae-text-area>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex justify-center w-full lg:w-6/12 shadow bg-gray-100 rounded mx-2 p-4">
-                <span class="text-2xl">{{member.birthDate}}</span>
-            </div>
-        </div>
-        <div class="flex w-12/12 lg:w-4/12 -mx-2">
-            <div class="w-full h-48 shadow bg-gray-100 rounded px-3 py-2">
-                <span class="text-2xl">Allergies</span>
+            <!-- Columna derecha -->
+            <div class="w-full lg:w-4/12 mt-3 lg:mt-0 px-2">
+                <div class="bg-gray-100 rounded shadow h-64 px-3 py-2">
+                    <span class="text-2xl">Allergies</span>
+                </div>
             </div>
         </div>
     </div>
+    <!--    <div class="flex mx-2 md:mx-0 mt-4">-->
+    <!--        <div class="flex flex-wrap w-12/12 lg:w-8/12 -mx-2">-->
+    <!--            <div class="w-full lg:w-6/12 shadow bg-gray-100 rounded mx-2 p-4">-->
+    <!--                {{member.currentBranch}}-->
+    <!--            </div>-->
+    <!--            <div class="flex justify-center w-full lg:w-6/12 shadow bg-gray-100 rounded mx-2 p-4">-->
+    <!--                <span class="text-2xl">{{member.birthDate}}</span>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="flex w-12/12 lg:w-4/12 -mx-2">-->
+    <!--            <div class="w-full h-48 shadow bg-gray-100 rounded px-3 py-2">-->
+    <!--                <span class="text-2xl">Allergies</span>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
 
 <!--        <div class="w-2/12">-->

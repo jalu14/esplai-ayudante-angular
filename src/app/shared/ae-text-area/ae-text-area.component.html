@@ -1,5 +1,5 @@
 <ng-container>
-    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" [for]="key">
+    <label *ngIf="label === undefined || label.length !== 0" class="block tracking-wide text-gray-700 text-xs font-bold mb-2" [for]="key">
         {{'labels.' + (label || key) | translate}}
     </label>
     <textarea
