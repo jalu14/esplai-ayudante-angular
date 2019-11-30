@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
   }
 
   public delete() {
-    this.modal.confirm('error', 'borrar')
+    this.modal.confirm('error', 'deleteMember')
       .subscribe(res => console.log(res));
   }
 }

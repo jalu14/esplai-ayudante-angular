@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule }     from '@angular/common/http';
 import { TranslateHttpLoader }              from '@ngx-translate/http-loader';
 
 
-import { AppRoutingModule }                       from './app-routing.module';
+import { AppRouting }                             from './app.routing';
 import { AppComponent }                           from './app.component';
 import { SharedModule }                           from './shared/shared.module';
 import { ServicesModule }                         from './services/services.module';
@@ -33,7 +33,7 @@ export function provideConfig() {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRouting,
     SharedModule,
     ServicesModule,
     HttpClientModule,

@@ -1,6 +1,9 @@
 import { Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { ModalService }                                                                       from '../../services/modal/modal.service';
-import { CustomModalComponent }                                                               from './modals/custom-modal/custom-modal.component';
+import { ModalService }               from '../../services/modal/modal.service';
+import { CustomModalComponent }       from './modals/custom-modal/custom-modal.component';
+import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
+import { ModalTypeConfiguration }     from './modal-type.configuration';
+import { throwError }                 from 'rxjs';
 
 @Component({
   selector: 'ae-modal',
@@ -16,8 +19,8 @@ export class AeModalComponent implements OnInit {
               private resolver: ComponentFactoryResolver) { }
 
   public ngOnInit() {
-    this.modal.getModal().subscribe((modal) => {
-      this.createCustomModal(modal);
+    this.modal.getModal().subscribe(({modal, type}) => {
+      this.createModal(modal, type);
     });
     this.modal.getResponse().subscribe(() => {
       this.removeLast();
@@ -28,16 +31,7 @@ export class AeModalComponent implements OnInit {
     this.modal.close({message: 'backdrop', entity: null})
   }
 
-  private createNewModal(modal) {
-    let inputProviders = [];
-    if (modal.params) {
-      inputProviders = Object.keys(modal.params).map((inputName) => {
-        return {provide: inputName, useValue: modal.params[inputName]};
-      });
-    }
-  }
-
-  private createCustomModal(modal: { component: any, params: any, size: any }) {
+  private createModal(modal: { component: any, params: any, size: any }, type: string) {
     let inputProviders = [];
     if (modal.params) {
       inputProviders = Object.keys(modal.params).map((inputName) => {
@@ -49,7 +43,12 @@ export class AeModalComponent implements OnInit {
     let injector = Injector.create({providers: inputProviders, parent: this.modalContentContainer.parentInjector});
 
     // Creamos la Factory del contenido del modal que queremos crear
-    let factory = this.resolver.resolveComponentFactory(CustomModalComponent);
+    const modalComponent = ModalTypeConfiguration[type];
+    if (!modalComponent) {
+      console.error('Modal component was not found or configured');
+      return;
+    }
+    let factory = this.resolver.resolveComponentFactory(modalComponent);
 
     // Creamos el componente que vamos a iyectar con la factoria y el inyector
     let component = factory.create(injector);

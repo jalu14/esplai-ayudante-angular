@@ -5,16 +5,15 @@ import { ModalResponse }     from '../../core/models';
 @Injectable()
 export class ModalService {
 
-  private openModal: Subject<any> = new Subject<any>();
+  private openModal: Subject<{modal: any, type: string}> = new Subject<any>();
   private response: Subject<any>[] = [];
   private closeModal: Subject<any> = new Subject<any>();
 
-  public open(modal: any): Observable<any> {
-    this.openModal.next(modal);
+  public open(type: string, modal: any) {
+    this.openModal.next({modal, type: type});
     this.response.push(new Subject<any>());
-
     return this.response[this.response.length - 1].asObservable();
-  }
+  };
 
   public getModal(): Observable<any> {
     return this.openModal.asObservable();

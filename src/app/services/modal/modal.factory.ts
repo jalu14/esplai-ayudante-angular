@@ -9,22 +9,46 @@ export class ModalFactory {
               private resolver: ComponentFactoryResolver) {
   }
 
+  public information(type: 'primary' | 'warning' | 'error', title: string) {
+    return this.modal.open(
+      'information',
+      {
+        size: 'md',
+        ignoreBackDropClick: true,
+        params: {
+          type: type,
+          title: title
+        }
+      });
+  }
+
   public confirm(type: 'primary' | 'warning' | 'error', title: string) {
-    return this.modal.open({size: 'md', ignoreBackDropClick: true, params: {type, title}});
+    return this.modal.open(
+      'confirmation',
+      {
+        size: 'md',
+        ignoreBackDropClick: true,
+        params: {
+          type: type,
+          title: title
+        }
+      });
   }
 
   public custom(component: any, config: ModalConfig, entity: any, params?: any): Observable<any> {
     const parsedComponent = this.getTemplateRef(component);
-    return this.modal.open({
-      size: config.size,
-      ignoreBackDropClick: true,
-      params: {
-        modal: parsedComponent,
-        config: config,
-        entity: entity,
-        modalParams: params
-      }
-    });
+    return this.modal.open(
+      'custom',
+      {
+        size: config.size,
+        ignoreBackDropClick: true,
+        params: {
+          modal: parsedComponent,
+          config: config,
+          entity: entity,
+          modalParams: params
+        }
+      });
   }
 
   private getTemplateRef(component: any): TemplateRef<any> {

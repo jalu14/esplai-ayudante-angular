@@ -2,10 +2,10 @@ import { Component, Injector } from '@angular/core';
 import { ModalService }        from '../../../../services/modal/modal.service';
 
 @Component({
-  templateUrl: './confirmation-modal.component.html',
-  styleUrls: ['./confirmation-modal.component.scss']
+  templateUrl: './information-modal.component.html',
+  styleUrls: ['./information-modal.component.scss']
 })
-export class ConfirmationModalComponent {
+export class InformationModalComponent {
 
   public type: string;
   public title: string;
