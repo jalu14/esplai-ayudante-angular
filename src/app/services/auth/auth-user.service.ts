@@ -2,6 +2,7 @@ import { Injectable }                                   from '@angular/core';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { Subject }                                      from 'rxjs';
 import { Router }                                       from '@angular/router';
+import { ApiService }                                   from '../api/api.service';
 
 @Injectable()
 export class AuthUserService {
@@ -11,7 +12,11 @@ export class AuthUserService {
   public userAuthChanged = new Subject<SocialUser>();
 
   constructor(private ngxAuth: AuthService,
+              private api: ApiService,
               private router: Router) {
+    this.api.get('members')
+      .subscribe((res) => console.log(res));
+
     this.currentUser = JSON.parse(localStorage.getItem('token'));
     if (!this.currentUser) return;
     this.userAuthChanged.next(this.currentUser);
