@@ -3,7 +3,7 @@ import { ModalService }                                                from './m
 import { Observable }                                                  from 'rxjs';
 import { ModalConfig }                                                 from '../../core/models';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ModalFactory {
   constructor(private modal: ModalService,
               private resolver: ComponentFactoryResolver) {
@@ -36,7 +36,7 @@ export class ModalFactory {
   }
 
   public custom(component: any, config: ModalConfig, entity: any, params?: any): Observable<any> {
-    const parsedComponent = this.getTemplateRef(component);
+    const parsedComponent = this.getComponentFactory(component);
     return this.modal.open(
       'custom',
       {
@@ -51,11 +51,7 @@ export class ModalFactory {
       });
   }
 
-  private getTemplateRef(component: any): TemplateRef<any> {
-    if (!component) return;
-    let injector = Injector.create({providers: []});
-    let factory: any = this.resolver.resolveComponentFactory(component);
-    let componentInstance = factory.create(injector);
-    return componentInstance.instance.templateRef;
+  private getComponentFactory(component: any) {
+    return this.resolver.resolveComponentFactory(component);
   }
 }

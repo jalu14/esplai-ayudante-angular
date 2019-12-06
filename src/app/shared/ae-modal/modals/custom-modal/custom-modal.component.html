@@ -8,11 +8,7 @@
         </button>
     </div>
     <div class="body">
-        <ng-container
-            *ngIf="internalModal"
-            [ngTemplateOutlet]="internalModal"
-            [ngTemplateOutletContext]="{$implicit: entity}">
-        </ng-container>
+        <ng-template #modalContent></ng-template>
     </div>
     <div class="footer">
         <full-width-footer [hideCancel]="false"

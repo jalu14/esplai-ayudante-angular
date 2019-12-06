@@ -2,7 +2,7 @@ import {Injectable}          from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import { ModalResponse }     from '../../core/models';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ModalService {
 
   private openModal: Subject<{modal: any, type: string}> = new Subject<any>();
