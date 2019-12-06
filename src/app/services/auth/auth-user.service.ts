@@ -3,6 +3,9 @@ import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-lo
 import { Subject }                                      from 'rxjs';
 import { Router }                                       from '@angular/router';
 import { ApiService }                                   from '../api/api.service';
+import { StorageKeyConstant }                           from '../../core/constants';
+import * as jwt                                         from 'jwt-decode';
+import * as moment                                      from 'moment';
 
 @Injectable()
 export class AuthUserService {
@@ -14,12 +17,10 @@ export class AuthUserService {
   constructor(private ngxAuth: AuthService,
               private api: ApiService,
               private router: Router) {
-    this.api.get('members')
-      .subscribe((res) => console.log(res));
-
-    this.currentUser = JSON.parse(localStorage.getItem('token'));
+    this.currentUser = JSON.parse(localStorage.getItem(StorageKeyConstant.socialUser));
     if (!this.currentUser) return;
     this.userAuthChanged.next(this.currentUser);
+    this.checkTokenExp();
   }
 
   public signIn() {
@@ -27,9 +28,9 @@ export class AuthUserService {
       .then((data) => {
         console.log(data);
         this.currentUser = data;
-        localStorage.setItem('token', JSON.stringify(this.currentUser));
-        this.userAuthChanged.next(this.currentUser);
-        this.router.navigate(['']);
+        localStorage.setItem(StorageKeyConstant.token, this.currentUser.idToken);
+        localStorage.setItem(StorageKeyConstant.socialUser, JSON.stringify(this.currentUser));
+        this.apiLogin();
       });
   }
 
@@ -38,9 +39,40 @@ export class AuthUserService {
       .then((res) => {
         console.log(res);
         this.currentUser = null;
-        localStorage.removeItem('token');
+        localStorage.removeItem(StorageKeyConstant.token);
         this.userAuthChanged.next(null);
         this.router.navigate(['login']);
       });
+  }
+
+  private apiLogin() {
+    this.api.get('login').subscribe(
+      (res) => {
+        localStorage.setItem(StorageKeyConstant.token, res);
+        this.userAuthChanged.next(this.currentUser);
+        this.checkTokenExp();
+        this.router.navigate(['']);
+      },
+      (err) => {localStorage.removeItem(StorageKeyConstant.token)}
+    )
+  }
+
+  private checkTokenExp() {
+    const token = localStorage.getItem(StorageKeyConstant.token);
+    if (!token) return;
+    const decoded = jwt(token);
+    const decodedExp = moment.unix(decoded.exp);
+    const diff = decodedExp.diff(moment(), 'minutes');
+    if (diff < 10 && diff > 0) {
+      this.api.get('login/extend').subscribe(
+        (res) => localStorage.setItem(StorageKeyConstant.token, res),
+        (err) => console.log(err)
+      );
+    } else if (diff <= 0) {
+      this.signOut();
+    }
+    setTimeout(() => {
+      this.checkTokenExp();
+    }, 60000);
   }
 }

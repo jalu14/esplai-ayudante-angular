@@ -1,3 +1,4 @@
 export const StorageKeyConstant = {
-  token: 'token'
+  token: 'token',
+  socialUser: 'social-user',
 };

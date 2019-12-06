@@ -3,7 +3,7 @@ import { Spanish }                  from 'flatpickr/dist/l10n/es.js'
 import { Catalan }                  from 'flatpickr/dist/l10n/cat.js'
 import { TranslateService }         from '@ngx-translate/core';
 import { FormControl, Validators }  from '@angular/forms';
-import * as moment from 'moment';
+import * as moment                  from 'moment';
 
 @Component({
   selector: 'ae-datepicker',

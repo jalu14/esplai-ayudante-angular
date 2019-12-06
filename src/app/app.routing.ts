@@ -1,9 +1,16 @@
 import { NgModule }             from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoggedGuard }          from './logged-guard.service';
+import { LoggedGuard }          from './shared/guards/logged.guard';
+import { PermissionGuard }      from './shared/guards/permission.guard';
 
 
 const routes: Routes = [
+  {
+    path: 'admin',
+    loadChildren: () => import('./base/admin/admin.module').then(m => m.AdminModule),
+    canActivate: [PermissionGuard],
+    data: {perms: []}
+  },
   {
     path: 'events',
     loadChildren: () => import('./base/events/events.module').then(m => m.EventsModule),

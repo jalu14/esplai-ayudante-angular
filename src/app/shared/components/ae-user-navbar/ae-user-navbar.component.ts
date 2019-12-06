@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { SocialUser }                             from 'angularx-social-login';
-import { AuthUserService }                        from '../../services/auth/auth-user.service';
+import { AuthUserService }                        from '../../../services/auth/auth-user.service';
 
 @Component({
   selector: 'ae-user-navbar',

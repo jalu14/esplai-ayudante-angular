@@ -10,7 +10,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
   constructor() {
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token: string = localStorage.getItem(StorageKeyConstant.token);
 
     if (token) {

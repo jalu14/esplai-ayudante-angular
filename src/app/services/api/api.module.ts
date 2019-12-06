@@ -10,5 +10,5 @@ import { ApiService }       from './api.service';
     ApiService,
   ]
 })
-export class SharedModule {
+export class ApiModule {
 }
