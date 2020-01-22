@@ -1,4 +1,5 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { NavigationStart, Router }                               from '@angular/router';
 
 @Directive({
   selector: '[ae-tooltip]',
@@ -7,14 +8,18 @@ export class AeTooltipDirective {
 
   @Input('ae-tooltip') public tooltipTitle: string;
   @Input() public placement: string = 'top';
-  @Input() public delay: string = '0';
+  @Input() public delay: string = '150';
   private tooltip: HTMLElement;
   private mouseOnTooltip = false;
   // 호스트 요소와 tooltip 요소 간의 거리
-  private offset = 5;
-  private offsetLeft = 10;
+  private offset = 10;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {
+  constructor(private el: ElementRef,
+              private router: Router,
+              private renderer: Renderer2) {
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationStart) this.hide(true);
+    });
   }
 
   @HostListener('mouseenter') onMouseEnter() {
@@ -44,9 +49,10 @@ export class AeTooltipDirective {
     this.renderer.addClass(this.tooltip, 'ng-tooltip-show');
   }
 
-  private hide() {
+  private hide(force: boolean = false) {
+    if (!this.tooltip) return;
     setTimeout(() => {
-      if (this.mouseOnTooltip) return;
+      if (this.mouseOnTooltip && !force) return;
       this.renderer.removeClass(this.tooltip, 'ng-tooltip-show');
       window.setTimeout(() => {
         this.renderer.removeChild(document.body, this.tooltip);
@@ -82,6 +88,7 @@ export class AeTooltipDirective {
     this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this.delay}ms`);
     this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this.delay}ms`);
     this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this.delay}ms`);
+    this.renderer.setStyle(this.tooltip, 'word-break', `break-all`);
   }
 
   private setPosition() {
@@ -99,23 +106,35 @@ export class AeTooltipDirective {
     let top, left;
 
     if (this.placement === 'top') {
-      top = hostPos.top - tooltipPos.height - this.offset - 5;
-      left = hostPos.left + (hostPos.width - tooltipPos.width) / 2 + this.offsetLeft;
+      top = hostPos.top - tooltipPos.height - this.offset;
+      left = hostPos.left + (hostPos.width - tooltipPos.width) / 2 + this.offset;
     }
 
     if (this.placement === 'bottom') {
       top = hostPos.bottom + this.offset;
-      left = hostPos.left + (hostPos.width - tooltipPos.width) / 2 + this.offsetLeft;
+      left = hostPos.left + (hostPos.width - tooltipPos.width) / 2 + this.offset;
     }
 
     if (this.placement === 'left') {
       top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
-      left = hostPos.left - tooltipPos.width - this.offset + this.offsetLeft * 2;
+      left = hostPos.left - tooltipPos.width - this.offset / 2;
     }
 
     if (this.placement === 'right') {
       top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
-      left = hostPos.right + this.offset + this.offsetLeft * 2;
+      left = hostPos.right + this.offset + this.offset;
+    }
+
+    if (left < 10) {
+      this.placement = 'right';
+      this.setPosition();
+      return;
+    }
+
+    if (top < 10) {
+      this.placement = 'bottom';
+      this.setPosition();
+      return;
     }
 
     // 스크롤이 발생한 경우, tooltip 요소의 top에 세로 스크롤 좌표값을 반영하여야 한다.
