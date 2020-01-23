@@ -6,6 +6,12 @@ import { PermissionGuard }      from './shared/guards/permission.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./base/main/main.module').then(m => m.MainModule),
+    canActivate: [PermissionGuard],
+    data: {perms: []}
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./base/admin/admin.module').then(m => m.AdminModule),
     canActivate: [PermissionGuard],
@@ -27,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'events'
+    redirectTo: ''
   }
 ];
 
